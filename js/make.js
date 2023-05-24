@@ -21,7 +21,7 @@ function videoElement(video) {
                     </div>
     `
     var v = video['videos']
-    console.log(v)
+    //console.log(v)
     var middle = ''
     for (var i = 0; i < v.length; i++) {
         var vid = v[i]
@@ -40,7 +40,7 @@ function videoElement(video) {
         velement += `</div>
     </div>`
         middle += velement
-        // console.log(velement)
+        // //console.log(velement)
     }
     ht += header + middle + "</div>"
     return ht
@@ -49,24 +49,36 @@ function videoElement(video) {
 // load json file when page loads
 
 var videos = [];
-console.log("loading")
+//console.log("loading")
 $.getJSON("generated.json", function (data) {
     videos = data;
-    console.log(videos);
+    //console.log(videos);
     var gallery = document.getElementById("gallery_full")
-    console.log(videos.length)
+    //console.log(videos.length)
     full_string = ""
     for (var i = 0; i < videos.length; i++) {
         var video = videos[i]
         var velement = videoElement(video)
         full_string += velement
     }
-    console.log(full_string)
+    //console.log(full_string)
 
     gallery.innerHTML = full_string
 
     $('.video-popup').magnificPopup({
         type: 'iframe'
     });
+
+    /*------------------
+            Portfolio filter
+        --------------------*/
+    $('.portfolio__filter li').on('click', function () {
+        $('.portfolio__filter li').removeClass('active');
+        $(this).addClass('active');
+    });
+    if ($('.portfolio__gallery').length > 0) {
+        var containerEl = document.querySelector('.portfolio__gallery');
+        var mixer = mixitup(containerEl);
+    }
 });
 
