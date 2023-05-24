@@ -3,15 +3,16 @@
 
 // function to take a video object and return a video element
 function videoElement(video) {
-    var ht = '<div class="row portfolio__gallery">'
+    var portfolio__filter = document.getElementById("filterList")
+    // <li data-filter=".OmegaStudios">Omega Studios</li>
+    var filter = `<li data-filter=".${video['title'].replaceAll(" ", "")}">${video['title']}</li>`
+    portfolio__filter.innerHTML += filter
+    var ht = ''
     var header = `
-    <div class="col-lg-4 col-md-6 col-sm-6 mix ${video['company'].replaceAll(" ", "")}">
+    <div class="col-lg-4 col-md-6 col-sm-6 mix ${video['title'].replaceAll(" ", "")}">
                         <div class="portfolio__item">
                             <div class="portfolio__item__text">
-                                <h4>${video['company']}</h4>
-                                <ul>
-                                    <li>${video['date']}</li>
-                                </ul>
+                                <h4>${video['title']}</h4>
                                 <h6 style="color:white">
                                     ${video['description']}
                                 </h6>
@@ -24,18 +25,18 @@ function videoElement(video) {
     var middle = ''
     for (var i = 0; i < v.length; i++) {
         var vid = v[i]
-        var velement = `<div class="col-lg-4 col-md-6 col-sm-6 mix ${video['company'].replaceAll(" ", "")}">
+        var velement = `<div class="col-lg-4 col-md-6 col-sm-6 mix ${video['title'].replaceAll(" ", "")}">
         <div class="portfolio__item">
-            <div class="portfolio__item__video set-bg" data-setbg = "${vid['thumbnail']}">
-                <a href="${vid['url']}" class="play-btn video-popup"><i
+            <div class="portfolio__item__video set-bg" data-setbg = "https://img.youtube.com/vi/${vid.split("=")[1]}/maxresdefault.jpg" style="background-image: url(https://img.youtube.com/vi/${vid.split("=")[1]}/maxresdefault.jpg);">
+                <a href="${vid}" class="play-btn video-popup"><i
                         class="fa fa-play"></i></a>
             </div>
             `
-        if (vid['title'] != "") {
-            velement += `<div class="portfolio__item__text">
-                <h4>${vid['title']}</h4>
-            </div>`
-        }
+        // if (vid['title'] != "") {
+        //     velement += `<div class="portfolio__item__text">
+        //         <h4>${vid['title']}</h4>
+        //     </div>`
+        // }
         velement += `</div>
     </div>`
         middle += velement
@@ -49,7 +50,7 @@ function videoElement(video) {
 
 var videos = [];
 console.log("loading")
-$.getJSON("videos.json", function (data) {
+$.getJSON("generated.json", function (data) {
     videos = data;
     console.log(videos);
     var gallery = document.getElementById("gallery_full")
@@ -61,6 +62,11 @@ $.getJSON("videos.json", function (data) {
         full_string += velement
     }
     console.log(full_string)
-    // gallery.innerHTML = full_string
+
+    gallery.innerHTML = full_string
+
+    $('.video-popup').magnificPopup({
+        type: 'iframe'
+    });
 });
 
