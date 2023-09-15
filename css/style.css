@@ -32,6 +32,7 @@ body {
   height: 100%;
   font-family: "Josefin Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
+  background: #100028;
 }
 
 h1,
@@ -477,7 +478,7 @@ ol {
 
 .hero__item {
   height: 684px;
-  padding-top: 255px;
+  padding-top: 95px;
 }
 
 .hero__text span {

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/gridcustom.css" type="text/css">
 </head>
 
 <body>
@@ -40,17 +41,19 @@
                             <div class="hero__text">
                                 <span>Portfolio</span>
                                 <h2>Suvayan Ghosh</h2>
-                                <p style="color: white; ">HI there, hope you will enjoy my works. As you watch my
-                                    videos,
-                                    you will notice that I am a highly
-                                    creative person who is very passionate about what I do. I can turn monotonous and
-                                    unattractive videos into eye-catching and appealing videos that the audience will
-                                    never get tired of. I've collaborated with a number of YouTube and other platform
-                                    creators. And I've made a wide range of videos. As a result, I am capable of working
-                                    on a variety of video types, including White Board, colour correction, green screen,
-                                    info graphics, and motion graphics. As a result, I can offer a wide range of video
-                                    works that viewers will like. I can also work efficiently. I can produce
-                                    high-quality videos in a short amount of time.</p>
+                                <p style="color: white; font-size: 20px;">"Welcome to my world of creativity and
+                                    passion! 🎥✨<br>
+                                    As you dive into my videos, you'll discover a highly imaginative mind at work. I
+                                    have a knack for transforming dull and uninspiring content into captivating visual
+                                    experiences that keep audiences mesmerized.
+                                    With a diverse portfolio and collaborations with YouTube and other platform
+                                    creators, I've honed my skills across various video styles. Whether it's raw
+                                    footages, color correction, green screen wizardry, engaging infographics, or
+                                    dynamic motion graphics, I've got you covered.
+                                    What sets me apart? Efficiency! I take pride in delivering high-quality videos
+                                    swiftly, so you don't have to wait long to share your vision with the world.
+                                    Explore my works and let's turn your ideas into captivating video masterpieces
+                                    together!" 🌟🎬</p>
                                 <!-- <a href="#" class="primary-btn">See more about us</a> -->
                             </div>
                         </div>
@@ -60,13 +63,57 @@
         </div>
     </section>
     <!-- Hero Section End -->
+    <h1>
+        <center style="color: aliceblue; margin-top: 25px; margin-bottom: 25px;">My Works</center>
+    </h1>
+    <ul class="image-grid">
+
+        <li class="image-grid__item">
+            <a href="#videogrid" class="grid-item" onclick="switchActiveTab(1)">
+                <div class="grid-item__image"
+                    style="background-image: url(https://media.timeout.com/images/101602611/image.jpg)"></div>
+                <div class="grid-item__hover"></div>
+                <div class="grid-item__name">Social Media & Motion Graphics Videos</div>
+            </a>
+        </li>
+
+        <li class="image-grid__item">
+            <a href="#videogrid" class="grid-item" onclick="switchActiveTab(2)">
+                <div class="grid-item__image"
+                    style="background-image: url(http://s1.it.atcdn.net/wp-content/uploads/2015/08/2-London.jpg)"></div>
+                <div class="grid-item__hover"></div>
+                <div class="grid-item__name">Cinematics & Wedding Films</div>
+            </a>
+        </li>
+
+        <li class="image-grid__item">
+            <a href="#videogrid" class="grid-item" onclick="switchActiveTab(3)">
+                <div class="grid-item__image"
+                    style="background-image: url(https://media.timeout.com/images/101484105/image.jpg)"></div>
+                <div class="grid-item__hover"></div>
+                <div class="grid-item__name">Reels & Shorts</div>
+            </a>
+        </li>
+
+        <li class="image-grid__item">
+            <a href="#videogrid" class="grid-item" onclick="switchActiveTab(4)">
+                <div class="grid-item__image"
+                    style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Hollywood_Sign.jpg/1280px-Hollywood_Sign.jpg)">
+                </div>
+                <div class="grid-item__hover"></div>
+                <div class="grid-item__name">More Edits</div>
+            </a>
+        </li>
+
+
+    </ul>
     <!-- Portfolio Section Begin -->
-    <section class="portfolio spad">
+    <section class="portfolio spad" id="videogrid">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <ul class="portfolio__filter" id="filterList">
-                        <li class="active" data-filter="*">All</li>
+                    <ul class="portfolio__filter" id="filterList" hidden>
+                        <li class="active mixitup-control-active" data-filter="*">All</li>
                     </ul>
                 </div>
             </div>
@@ -117,12 +164,25 @@
     <script src="js/masonry.pkgd.min.js"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <script>
-        // load json file from videos.json
 
-    </script>
     <script src="js/make.js"></script>
     <script src="js/main.js"></script>
+    <script>
+
+        // make a function  to switch active tabs in filterlist by adding "active mixitup-control-active"
+        function switchActiveTab(index) {
+            var filterList = document.getElementById("filterList");
+            var filterListItems = filterList.getElementsByTagName("li");
+
+            for (var i = 0; i < filterListItems.length; i++) {
+                if (index == i) {
+                    // emulate click event on selected tab
+                    filterListItems[i].click();
+                }
+            }
+        }
+
+    </script>
 </body>
 
 </html>
